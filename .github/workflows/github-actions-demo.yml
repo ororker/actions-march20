@@ -1,0 +1,21 @@
+name: robs-workflow
+
+on: 
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches: 
+      - main
+  schedule:
+    - cron: '15 6 * * 0'
+  workflow_dispatch:
+
+jobs:
+  log-the-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "event name is:" ${{ github.event_name }}
+          echo "event name is:" ${{ github.branch_name }}
+          
